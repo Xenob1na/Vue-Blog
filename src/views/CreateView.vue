@@ -11,17 +11,19 @@
 
         <div class="mb-3">
           <label>Название</label>
-          <input type="text" class="form-control" placeholder="Придумайте название статьи">
+          <input type="text" class="form-control" 
+          :placeholder="placeholder"
+          :value="InputValue"
+          v-on:input="InputFields"
+          >
         </div>
         <div class="mb-3">
           <label>Описание</label>
-          <textarea class="form-control" placeholder="Напишите описание статьи" rows="5"></textarea>
-        </div>
-        <div class="mb-4">
-          <label>Изображение</label>
-          <input type="file" class="form-control">
-
-          <img src="assets/images/placeholder-blue.png" class="w-100 mt-4" alt="preview">
+          <textarea class="form-control" 
+          :placeholder="placeholder2" 
+          :value="InputValue2"
+          v-on:input="InputFields2"
+          rows="5"></textarea>
         </div>
 
         <button class="btn btn-success">Добавить статью</button>
@@ -39,5 +41,31 @@
 		components: {
 			Header,
 		},
+    data() {
+      return {
+        placeholder: 'Придумайте название статьи',
+        placeholder2: 'Напишите описание статьи',
+        posts: [
+          {
+            name: 'Post1',
+            datetime: new Date().toLocaleTimeString()
+          },
+          {
+            name: 'Post2',
+            datetime: new Date().toLocaleTimeString()
+          }
+        ],
+        InputValue: '',
+        InputValue2: '',
+      }
+    },
+    methods: {
+      InputFields(event) {
+        this.InputValue = event.target.value
+      },
+      InputFields2(event) {
+        this.InputValue2 = event.target.value
+      },
+    }
 	}
 </script>
