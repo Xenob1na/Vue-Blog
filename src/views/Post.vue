@@ -2,36 +2,33 @@
     <div class='post'>
         <div class="container">
     <section class="py-5">
-      <h2 class="mb-4">{{name}}</h2>
+      <h2 class="mb-4">{{ film.name }}</h2>
+       <!-- <img :src=" require('../assets/mocks/data.js' + film.image ) ">  -->
 
       <img class="mb-4 w-100" src="../assets/images/placeholder-blue.png" alt="placeholder">
 
       <p>
-        {{ description }}
+        {{ film.description }}
     </p>
-        <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dignissimos sequi similique. Asperiores atque
-        autem cumque eius expedita id illo incidunt laborum libero magni neque nostrum nulla quaerat quam quas repellat
-        repudiandae sed soluta, totam veniam. Accusantium at commodi consequatur, dolore est facere fugiat maiores modi,
-        nemo perspiciatis placeat, quae quaerat quas quibusdam quos reiciendis rem sunt tenetur ut voluptatibus.
-        Aspernatur, autem blanditiis, commodi consequuntur culpa cumque, deserunt dignissimos eius expedita illo ipsam
-        iste officiis quam quasi qui quidem recusandae sint soluta. Aliquam aliquid consectetur dolores id? Animi, aut
-        doloremque error illo labore laudantium, maxime molestias nesciunt porro, sunt ut! -->
+        
     </section>
   </div>
     </div>
 </template>
 
 <script>
+import data from '../mocks/data'
 export default {
-    data() {
-        return {
-            name: this.$route.params.namepost,
-            description: this.$route.params.namepost
-           
-        }
-    },
+  data() {
+    return {
+        film: null
+    }
+  },
+  created() {
+    const film = data.find(film => film.id == this.$route.params.id)
+    if (film) {
+      this.film = film
+    }
+  }
 }
 </script>
-<style lang="">
-    
-</style>
