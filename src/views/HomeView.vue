@@ -1,6 +1,5 @@
 <template>
 	<div class="home">
-		<Header msg="Welcome to Your Vue.js App" />
 		<div class="container">
     <section class="py-5">
       <div class="mb-4 d-flex justify-content-between align-items-center">
@@ -33,12 +32,12 @@
 
 <script>
 	// @ is an alias to /src
-	import Header from '@/components/Header.vue'
+	
   import vCatalog from '../components/v-catalog.vue';
 	export default {
 		name: 'Home',
 		components: {
-			Header,
+		
       vCatalog
 		},
     data() {

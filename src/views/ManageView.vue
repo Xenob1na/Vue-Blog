@@ -1,6 +1,5 @@
 <template>
 	<div class="mange">
-		<Header msg="Welcome to Your Vue.js App" />
 		<div class="container">
     <section class="py-5">
       
@@ -44,7 +43,7 @@
         </tr>
         <tr v-for="(post, index) in posts" :key="post.name">
           <td>{{ index + 1}}</td>
-          <td>{{ post}}</td>
+          <td>{{ post }}</td>
           <td>
             <button class="btn btn-sm btn-del" v-on:click="DelPost(index)">Удалить</button>
           </td>
@@ -61,11 +60,11 @@
 <script>
 	// @ is an alias to /src
   
-	import Header from '@/components/Header.vue'
+	
 	export default {
 		name: 'Home',
 		components: {
-			Header,
+	
       
 		},
     data() {
@@ -85,9 +84,6 @@
       InputFields(event) {
         this.InputValue = event.target.value
       },
-      // InputFields2(event) {
-      //   this.InputValue2 = event.target.value
-      // },
       AddPost() {
         if(this.InputValue !== '') {
           this.posts.push(this.InputValue)

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ManageView from '../views/ManageView.vue'
-import CreateView from '../views/CreateView.vue'
 import Post from '../views/Post.vue'
 
 const router = createRouter({
@@ -25,16 +24,7 @@ const router = createRouter({
       name: 'mange',
       component: ManageView
     },
-    {
-      path: '/createpost',
-      name: 'creat',
-      component: CreateView
-    },
-    // {
-    //   path: '/post/:namepost?',
-    //   name: 'post',
-    //   component: Post
-    // },
+    
     {
       path: '/post/:id',
       name: 'post',

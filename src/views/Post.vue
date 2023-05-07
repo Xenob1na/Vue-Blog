@@ -1,34 +1,37 @@
 <template>
     <div class='post'>
-        <div class="container">
-    <section class="py-5">
-      <h2 class="mb-4">{{ film.name }}</h2>
-       <!-- <img :src=" require('../assets/mocks/data.js' + film.image ) ">  -->
-
-      <img class="mb-4 w-100" src="../assets/images/placeholder-blue.png" alt="placeholder">
-
-      <p>
-        {{ film.description }}
-    </p>
-        
+      <div class="container">
+        <section class="py-5">
+          <h2 class="mb-4">{{ post.name }}</h2>
+          <img class="mb-4 w-100" src="../assets/images/placeholder-blue.png" alt="placeholder">
+          <p>
+            {{ post.description }}
+         </p>
+        </section>
+    </div>
+    <section class="comment">
+      <v-comment/>
     </section>
   </div>
-    </div>
 </template>
 
 <script>
+import vComment from '../components/v-comment.vue'
 import data from '../mocks/data'
 export default {
   data() {
     return {
-        film: null
+        post: null
     }
   },
   created() {
-    const film = data.find(film => film.id == this.$route.params.id)
-    if (film) {
-      this.film = film
+    const post = data.find(post => post.id == this.$route.params.id)
+    if (post) {
+      this.post = post
     }
+  },
+  components: {
+    vComment,
   }
 }
 </script>
