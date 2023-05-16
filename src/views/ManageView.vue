@@ -15,16 +15,14 @@
           <label>Название</label>
           <input type="text" class="form-control" 
           :placeholder="placeholder"
-          :value="InputValue"
-          v-on:input="InputFields"
+          v-model="InputValue"
           >
         </div>
         <div class="mb-3">
           <label>Описание</label>
           <textarea class="form-control" 
           :placeholder="placeholder2" 
-          :value="InputValue2"
-          v-on:input="InputFields2"
+          v-model="InputValue2"
           rows="5"></textarea>
         </div>
 
@@ -32,6 +30,11 @@
       </form>
     </section>
   </div>
+  <div class="alert alert-success d-flex justify-content-between alertW" role="alert" v-if="notificationIsShow">
+    <p>Пост успешно добавлен!</p>
+</div>
+
+
   <div class="mb-4 d-flex justify-content-between align-items-center">
         <h2>{{ title3 }}</h2>
       </div>
@@ -39,13 +42,17 @@
         <tr>
           <th>#</th>
           <th>Название</th>
+          <th>Дата</th>
           <th>Действия</th>
         </tr>
         <tr v-for="(post, index) in posts" :key="post.name">
           <td>{{ index + 1}}</td>
-          <td>{{ post }}</td>
+          <td>{{ post.title }}<br></td>
+          <td>{{ post.date }}</td>
           <td>
             <button class="btn btn-sm btn-del" v-on:click="DelPost(index)">Удалить</button>
+            
+
           </td>
         </tr>
       </table>
@@ -72,27 +79,49 @@
         title3: 'Управление статьями',
         placeholder: 'Придумайте название статьи',
         placeholder2: 'Напишите описание статьи',
+        notificationIsShow: false,
         posts: [
-         'Firste post', 'Two post'
-        ],
+                {
+                    title: 'Значимость проблем',
+                    // description: 'Не следует, однако забывать, что консультация с широким активом влечет за собой процесс внедрения',
+                    date: new Date().toLocaleTimeString(),
+                },
+                {
+                    title: 'Формирование позиции',
+                    // description: 'Не следует, однако забывать, что консультация с широким активом влечет за собой процесс внедрения!',
+                    date: new Date().toLocaleTimeString(),
+                },
+            ],
         InputValue: '',
         InputValue2: '',
         editTask: null,
       }
     },
     methods: {
-      InputFields(event) {
-        this.InputValue = event.target.value
-      },
+
       AddPost() {
-        if(this.InputValue !== '') {
-          this.posts.push(this.InputValue)
-          this.InputValue = ''
-        }
+        if( this.InputValue !== '') {
+                this.posts.push({
+                title: this.InputValue,
+                description: this.InputValue2,
+                date: new Date().toLocaleTimeString(),
+                }),
+                this.InputValue = '',
+                this.InputValue2 = '',
+                this.notificationIsShow = !this.notificationIsShow
+            }
       },
       DelPost(index) {
         this.posts.splice(index, 1)
       },
+      hideNotification () {
+        setTimeout(() => {
+          this.notificationIsShow = false
+        },5000);
+      },
+    },
+    mounted() {
+      this.hideNotification()
     }
 	}
 </script>
@@ -106,5 +135,7 @@
 .VIF {
   text-align: center;
 }
-
+.close {
+  cursor: pointer;
+}
 </style>

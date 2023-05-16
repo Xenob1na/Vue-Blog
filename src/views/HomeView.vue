@@ -18,12 +18,9 @@
       </div>
 
 
-      <a href="#" class="card bg-dark text-white">
-        <img class="card-img" src="../assets/images/placeholder-blue.png" alt="placeholder">
-        <div class="card-img-overlay">
-          <h5 class="card-title">Формирование позиции</h5>
-        </div>
-      </a>
+      
+        <vCatalogTop/>
+      
     </section>
     
   </div>
@@ -32,18 +29,18 @@
 
 <script>
 	// @ is an alias to /src
-	
+	import vCatalogTop from '../components/v-catalog-top.vue';
   import vCatalog from '../components/v-catalog.vue';
 	export default {
 		name: 'Home',
 		components: {
-		
+      vCatalogTop,
       vCatalog
 		},
     data() {
       return {
         title: 'Актуальное',
-        title2: 'Случайная статья'
+        title2: 'Популярная статья'
         
       }
     },
