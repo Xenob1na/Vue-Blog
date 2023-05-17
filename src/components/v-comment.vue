@@ -56,12 +56,12 @@ export default {
                 {
                     name: 'Danil',
                     comments: 'Good Post!',
-                    date: new Date().toLocaleTimeString(),
+                    date: new Date().toLocaleDateString('RU'),
                 },
                 {
                     name: 'Anton',
                     comments: 'Good!',
-                    date: new Date().toLocaleTimeString(),
+                    date: new Date().toLocaleDateString('RU'),
                 },
             ],
             InputValue: '',
@@ -74,7 +74,7 @@ export default {
                 this.AllComment.push({
                 name: this.InputValue,
                 comments: this.InputValue2,
-                date: new Date().toLocaleTimeString(),
+                date: new Date().toLocaleDateString('RU'),
                 }),
                 this.InputValue = '',
                 this.InputValue2 = ''

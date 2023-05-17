@@ -12,7 +12,7 @@
                     <p class="card-text">{{ product_data.description }}</p>
                     
 
-                    <!-- <RouterLink :to="'/post/' + product_data.name" class="btn btn-primary">Читать</RouterLink> -->
+                   
                     <RouterLink :to="{path: `/post/${product_data.id}`}"    class="btn btn-primary">Читать</RouterLink>
                 </div>
             </div>

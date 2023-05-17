@@ -26,13 +26,10 @@
           rows="5"></textarea>
         </div>
 
-        <button class="btn btn-success" v-on:click.prevent="AddPost">Добавить статью</button>
+        <button class="btn btn-success" id="liveToastBtn" v-on:click.prevent="AddPost">Добавить статью</button>
       </form>
     </section>
   </div>
-  <div class="alert alert-success d-flex justify-content-between alertW" role="alert" v-if="notificationIsShow">
-    <p>Пост успешно добавлен!</p>
-</div>
 
 
   <div class="mb-4 d-flex justify-content-between align-items-center">
@@ -79,17 +76,16 @@
         title3: 'Управление статьями',
         placeholder: 'Придумайте название статьи',
         placeholder2: 'Напишите описание статьи',
-        notificationIsShow: false,
         posts: [
                 {
                     title: 'Значимость проблем',
                     // description: 'Не следует, однако забывать, что консультация с широким активом влечет за собой процесс внедрения',
-                    date: new Date().toLocaleTimeString(),
+                    date: new Date().toLocaleDateString('RU'),
                 },
                 {
                     title: 'Формирование позиции',
                     // description: 'Не следует, однако забывать, что консультация с широким активом влечет за собой процесс внедрения!',
-                    date: new Date().toLocaleTimeString(),
+                    date: new Date().toLocaleDateString('RU'),
                 },
             ],
         InputValue: '',
@@ -107,21 +103,12 @@
                 date: new Date().toLocaleTimeString(),
                 }),
                 this.InputValue = '',
-                this.InputValue2 = '',
-                this.notificationIsShow = !this.notificationIsShow
+                this.InputValue2 = ''
             }
       },
       DelPost(index) {
         this.posts.splice(index, 1)
       },
-      hideNotification () {
-        setTimeout(() => {
-          this.notificationIsShow = false
-        },5000);
-      },
-    },
-    mounted() {
-      this.hideNotification()
     }
 	}
 </script>
@@ -135,7 +122,5 @@
 .VIF {
   text-align: center;
 }
-.close {
-  cursor: pointer;
-}
+
 </style>
